@@ -1,0 +1,26 @@
+function wordFrequencies(string) {
+
+  let wordsArray = string.split(" ");
+  let wordCount = {};
+
+  for (var i = 0; i < wordsArray.length; i++) {
+    if (!(wordCount[wordsArray[i]])) {
+      wordCount[wordsArray[i]] = 1;
+      continue;
+    }
+    if ((wordCount[wordsArray[i]])) {
+      wordCount[wordsArray[i]] += 1;
+    }
+  }
+
+  var sortable = [];
+  for (var word in wordCount) {
+      sortable.push([word, wordCount[word]]);
+  }
+
+  sortable.sort(function(a, b) {
+      return b[1] - a[1];
+  });
+
+  return sortable;
+}
