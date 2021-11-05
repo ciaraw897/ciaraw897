@@ -1,0 +1,46 @@
+function wordFrequencies(string) {
+  //give it a sentence
+  //it splits up the sentence on each space
+  //puts all words into an array
+ 
+  let wordsArray = string.split(" ");
+  let wordCount = {};
+
+  //goes through the array
+  //puts each new word into an object as a key
+  //gives each new word a count of 1
+  //or, increments existing count by 1
+  
+  for (var i = 0; i < wordsArray.length; i++) {
+    if (!(wordCount[wordsArray[i]])) {
+      wordCount[wordsArray[i]] = 1;
+      continue;
+    }
+    if ((wordCount[wordsArray[i]])) {
+      wordCount[wordsArray[i]] += 1;
+    }
+  }
+
+  //turns each key/value pair into arrays in an array
+  
+  var sortable = [];
+  for (var word in wordCount) {
+      sortable.push([word, wordCount[word]]);
+  }
+
+  //sorts from highest to lowest count
+  
+  sortable.sort(function(a, b) {
+      return b[1] - a[1];
+  });
+
+  //return sorted array
+  console.log(sortable);
+  return sortable;
+}
+
+var practice1 = 'Before you can begin to determine what the composition of a particular paragraph will be, you must first decide on an argument and a working thesis statement for your paper. What is the most important idea that you are trying to convey to your reader? The information in each paragraph must be related to that idea. In other words, your paragraphs should remind your reader that there is a recurrent relationship between your thesis and the information in each paragraph. A working thesis functions like a seed from which your paper, and your ideas, will grow. The whole process is an organic one—a natural progression from a seed to a full-blown paper where there are direct, familial relationships between all of the ideas in the paper.'
+wordFrequencies(practice1)
+
+var practice2 = "Il nome 'Colosseo' si diffuse solo nel Medioevo, e deriva dalla deformazione popolare dell'aggettivo latino 'colosseum' (traducibile in 'colossale', come appariva nell'Alto Medioevo tra le casette a uno o due piani) o, più probabilmente, dalla vicinanza della colossale statua acrolitica di Nerone che sorgeva nei pressi. Presto l'edificio divenne simbolo della città imperiale, espressione di un'ideologia in cui la volontà celebrativa giunge a definire modelli per lo svago e il divertimento del popolo."
+wordFrequencies(practice2)
